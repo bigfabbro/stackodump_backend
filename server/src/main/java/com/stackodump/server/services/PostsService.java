@@ -1,4 +1,5 @@
 package com.stackodump.server.services;
+import com.stackodump.server.models.CommentsEntity;
 import com.stackodump.server.models.PostsEntity;
 import com.stackodump.server.repositories.PostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class PostsService {
         return repository.searchPosts(text, limit);
     }
 
+    public List<CommentsEntity> getPostComments(Integer id){
+        return repository.getPostComments(id);
+    }
 
 
 

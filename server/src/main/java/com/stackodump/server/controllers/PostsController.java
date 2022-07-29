@@ -1,5 +1,6 @@
 package com.stackodump.server.controllers;
 
+import com.stackodump.server.models.CommentsEntity;
 import com.stackodump.server.models.PostsEntity;
 import com.stackodump.server.services.PostsService;
 import javassist.NotFoundException;
@@ -33,5 +34,7 @@ public class PostsController {
     public List<PostsEntity> searchPosts(@RequestParam("q") String queryText, @RequestParam("l") Integer maxResultNum){
         return service.searchPosts(queryText, maxResultNum);
     }
+    @GetMapping("/{id}/comments")
+    public List<CommentsEntity> getPostComments(@PathVariable Integer id){return service.getPostComments(id);}
 
 }

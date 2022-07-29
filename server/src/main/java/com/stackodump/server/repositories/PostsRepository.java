@@ -1,5 +1,6 @@
 package com.stackodump.server.repositories;
 
+import com.stackodump.server.models.CommentsEntity;
 import com.stackodump.server.models.PostsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -21,4 +22,6 @@ public interface PostsRepository extends JpaRepository<PostsEntity, Integer> {
             nativeQuery = true)
     public List<PostsEntity> searchPosts(String text, Integer limit);
 
+    @Query("SELECT c from CommentsEntity as c WHERE c.postId =?1")
+    public List<CommentsEntity> getPostComments(Integer id);
 }
