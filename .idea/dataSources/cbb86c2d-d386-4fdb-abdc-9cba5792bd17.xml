@@ -11,9 +11,9 @@
 13753||10|c|G
 13753||10|C|G
 13753||10|T|G</Grants>
-      <IntrospectionStateNumber>232259</IntrospectionStateNumber>
+      <IntrospectionStateNumber>232261</IntrospectionStateNumber>
       <ServerVersion>14.2</ServerVersion>
-      <StartupTime>1659336503</StartupTime>
+      <StartupTime>1659423385</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -803,17 +803,17 @@ false Zulu
     </database>
     <database id="3" parent="1" name="stackODump">
       <Current>1</Current>
-      <Grants>11||-9223372036854775807|C|G
+      <Grants>11||10|C|G
 11||-9223372036854775808|U|G
-11||-9223372036854775807|U|G
+11||10|U|G
 2200||-9223372036854775808|C|G
-2200||-9223372036854775807|C|G
+2200||10|C|G
 2200||-9223372036854775808|U|G
-2200||-9223372036854775807|U|G
-13388||-9223372036854775807|C|G
+2200||10|U|G
+13388||10|C|G
 13388||-9223372036854775808|U|G
-13388||-9223372036854775807|U|G</Grants>
-      <IntrospectionStateNumber>232259</IntrospectionStateNumber>
+13388||10|U|G</Grants>
+      <IntrospectionStateNumber>232261</IntrospectionStateNumber>
       <ObjectId>16560</ObjectId>
       <Relations>sequence|table|16561|16562|1
 sequence|table|16573|16574|1
@@ -4250,7 +4250,7 @@ sequence|table|16623|16624|1
     <schema id="263" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>232259</IntrospectionStateNumber>
+      <IntrospectionStateNumber>232261</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>527</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -4774,20 +4774,26 @@ sequence|table|16623|16624|1
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="342" parent="276" name="weighted_tsv_idx">
+    <index id="342" parent="276" name="posts_parent_id_index">
+      <ColNames>parent_id</ColNames>
+      <ObjectId>2078890</ObjectId>
+      <StateNumber>232260</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="343" parent="276" name="weighted_tsv_idx">
       <ColNames>weighted_tsv</ColNames>
       <ObjectId>2078856</ObjectId>
       <StateNumber>177377</StateNumber>
       <AccessMethodId>2742</AccessMethodId>
     </index>
-    <key id="343" parent="276" name="posts_pkey">
+    <key id="344" parent="276" name="posts_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16583</ObjectId>
       <Primary>1</Primary>
       <StateNumber>896</StateNumber>
       <UnderlyingIndexId>16582</UnderlyingIndexId>
     </key>
-    <column id="344" parent="277" name="id">
+    <column id="345" parent="277" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;tags_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4795,33 +4801,33 @@ sequence|table|16623|16624|1
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="345" parent="277" name="excerpt_post_id">
+    <column id="346" parent="277" name="excerpt_post_id">
       <DataType>integer|0s</DataType>
       <Position>2</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="346" parent="277" name="wiki_post_id">
+    <column id="347" parent="277" name="wiki_post_id">
       <DataType>integer|0s</DataType>
       <Position>3</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="347" parent="277" name="tag_name">
+    <column id="348" parent="277" name="tag_name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>896</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="348" parent="277" name="count">
+    <column id="349" parent="277" name="count">
       <DataType>integer|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <Position>5</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="349" parent="277" name="tags_pkey">
+    <index id="350" parent="277" name="tags_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16629</ObjectId>
@@ -4830,14 +4836,14 @@ sequence|table|16623|16624|1
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="350" parent="277" name="tags_pkey">
+    <key id="351" parent="277" name="tags_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16630</ObjectId>
       <Primary>1</Primary>
       <StateNumber>896</StateNumber>
       <UnderlyingIndexId>16629</UnderlyingIndexId>
     </key>
-    <column id="351" parent="278" name="id">
+    <column id="352" parent="278" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4845,86 +4851,86 @@ sequence|table|16623|16624|1
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="352" parent="278" name="account_id">
+    <column id="353" parent="278" name="account_id">
       <DataType>integer|0s</DataType>
       <Position>2</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="353" parent="278" name="reputation">
+    <column id="354" parent="278" name="reputation">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="354" parent="278" name="views">
+    <column id="355" parent="278" name="views">
       <DataType>integer|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <Position>4</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="355" parent="278" name="down_votes">
+    <column id="356" parent="278" name="down_votes">
       <DataType>integer|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <Position>5</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="356" parent="278" name="up_votes">
+    <column id="357" parent="278" name="up_votes">
       <DataType>integer|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <Position>6</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="357" parent="278" name="display_name">
+    <column id="358" parent="278" name="display_name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StateNumber>896</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="358" parent="278" name="location">
+    <column id="359" parent="278" name="location">
       <DataType>varchar(512)|0s</DataType>
       <Position>8</Position>
       <StateNumber>896</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="359" parent="278" name="profile_image_url">
+    <column id="360" parent="278" name="profile_image_url">
       <DataType>varchar(255)|0s</DataType>
       <Position>9</Position>
       <StateNumber>896</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="360" parent="278" name="website_url">
+    <column id="361" parent="278" name="website_url">
       <DataType>varchar(255)|0s</DataType>
       <Position>10</Position>
       <StateNumber>896</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="361" parent="278" name="about_me">
+    <column id="362" parent="278" name="about_me">
       <DataType>text|0s</DataType>
       <Position>11</Position>
       <StateNumber>896</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="362" parent="278" name="creation_date">
+    <column id="363" parent="278" name="creation_date">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>12</Position>
       <StateNumber>896</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="363" parent="278" name="last_access_date">
+    <column id="364" parent="278" name="last_access_date">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>13</Position>
       <StateNumber>896</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="364" parent="278" name="users_pkey">
+    <index id="365" parent="278" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16571</ObjectId>
@@ -4933,14 +4939,14 @@ sequence|table|16623|16624|1
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="365" parent="278" name="users_pkey">
+    <key id="366" parent="278" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16572</ObjectId>
       <Primary>1</Primary>
       <StateNumber>896</StateNumber>
       <UnderlyingIndexId>16571</UnderlyingIndexId>
     </key>
-    <column id="366" parent="279" name="id">
+    <column id="367" parent="279" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;votes_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4948,40 +4954,40 @@ sequence|table|16623|16624|1
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="367" parent="279" name="user_id">
+    <column id="368" parent="279" name="user_id">
       <DataType>integer|0s</DataType>
       <Position>2</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="368" parent="279" name="post_id">
+    <column id="369" parent="279" name="post_id">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>896</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="369" parent="279" name="vote_type_id">
+    <column id="370" parent="279" name="vote_type_id">
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>896</StateNumber>
       <TypeId>21</TypeId>
     </column>
-    <column id="370" parent="279" name="bounty_amount">
+    <column id="371" parent="279" name="bounty_amount">
       <DataType>smallint|0s</DataType>
       <Position>5</Position>
       <StateNumber>896</StateNumber>
       <TypeId>21</TypeId>
     </column>
-    <column id="371" parent="279" name="creation_date">
+    <column id="372" parent="279" name="creation_date">
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>896</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="372" parent="279" name="votes_pkey">
+    <index id="373" parent="279" name="votes_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16614</ObjectId>
@@ -4990,7 +4996,7 @@ sequence|table|16623|16624|1
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="373" parent="279" name="votes_pkey">
+    <key id="374" parent="279" name="votes_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16615</ObjectId>
       <Primary>1</Primary>

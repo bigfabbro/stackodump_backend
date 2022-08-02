@@ -24,4 +24,7 @@ public interface PostsRepository extends JpaRepository<PostsEntity, Integer> {
 
     @Query("SELECT c from CommentsEntity as c WHERE c.postId =?1")
     public List<CommentsEntity> getPostComments(Integer id);
+
+    @Query("SELECT p from PostsEntity as p WHERE p.parentId =?1")
+    public List<PostsEntity> getPostAnswers(Integer id);
 }

@@ -43,6 +43,9 @@ public class PostsService {
         return repository.getPostComments(id);
     }
 
+    public List<PostsEntity> getPostAnswers(Integer id){
+        return repository.getPostAnswers(id);
+    }
 
 
 }

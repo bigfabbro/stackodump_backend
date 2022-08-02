@@ -38,4 +38,7 @@ public class PostsController {
     @GetMapping("/{id}/comments")
     public List<CommentsEntity> getPostComments(@PathVariable Integer id){return service.getPostComments(id);}
 
+    @GetMapping("/{id}/answers")
+    public List<PostsEntity> getPostAnswers(@PathVariable Integer id){return service.getPostAnswers(id);}
+
 }
