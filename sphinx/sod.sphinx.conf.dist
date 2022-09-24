@@ -1,0 +1,109 @@
+#
+# StackODump Sphinx Configuration
+#
+
+#############################################################################
+## data source definition
+#############################################################################
+
+
+source psql_base
+{
+	type 	 								= pgsql
+	sql_host 								= 127.0.0.1
+	sql_port								= 5432
+	sql_user 								= SODServer
+	sql_pass 								= sod2022
+	sql_db 	 								= stackODump
+}
+
+## Posts source configuration (inherits psql_base)
+source posts_src : psql_base
+{
+	sql_query_range 						= SELECT MIN(id), MAX(id) FROM posts
+	
+	sql_attr_uint 							= creation_date
+	sql_attr_uint 							= score
+	sql_attr_uint 							= view_count
+	sql_attr_uint 							= favorite_count
+}
+
+## Questions data source
+source questions_src : posts_src
+{
+	sql_query 								= SELECT id, title, body, creation_date, score, view_count, favorite_count FROM posts WHERE id BETWEEN $start AND $end AND post_type_id = 1
+}
+
+## Answers data source
+source answers_src : posts_src
+{
+	sql_query 								= SELECT id, title, body, creation_date, score, view_count, favorite_count FROM posts WHERE id BETWEEN $start AND $end AND post_type_id = 2
+}
+
+
+#############################################################################
+## index definition
+#############################################################################
+
+
+## Questions index
+index questions_idx
+{
+    source 									= questions_src
+    path 									= D:\Sphinx\data\indexes\questions
+	type 									= plain
+	mlock 									= 0
+    morphology 								= none
+    min_word_len 							= 3
+	min_prefix_len 							= 3
+    html_strip 								= 1	# It Removes HTML Tags
+	stopwords 								= D:\Sphinx\etc\stopwords_edited.txt
+	stopword_step							= 1 # Means that stopwords doesn't count in position 
+	overshort_step							= 0 # Means that overshort words count in position 
+}
+
+## Answers index
+index answers_idx : questions_idx
+{
+    source 									= answers_src
+    path 									= D:\Sphinx\data\indexes\answers
+}
+
+
+#############################################################################
+## indexer settings
+#############################################################################
+
+
+indexer
+{
+    mem_limit 								= 512M
+}
+
+
+#############################################################################
+## searchd settings
+#############################################################################
+
+
+searchd
+{
+
+    listen = 127.0.0.1:9312:mysql41
+	listen = 127.0.0.1:9308:http
+    log = D:\Sphinx\data\logs\searchd.log
+    query_log = D:\Sphinx\data\logs\query.log
+    read_timeout = 5
+    client_timeout = 300
+    max_children = 30
+    persistent_connections_limit = 30
+    pid_file = D:\Sphinx\data\logs\searchd.pid
+    seamless_rotate = 1
+    preopen_indexes = 1
+    unlink_old = 1
+    max_packet_size = 8M
+    max_filters = 256
+    max_filter_values = 4096
+    max_batch_queries = 32
+    workers = thread_pool
+}
